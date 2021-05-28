@@ -45,7 +45,6 @@ pipeline {
         stage ('Deploy Frontend') {
             steps {
                 dir('frontend') {
-                    echo"pulling changes from the ericson branch ${params.branch}"
                     git credentialsId: 'github_login', url: 'https://github.com/erickmattoso/tasks-frontend', branch: "main"
                     bat 'mvn clean package'
                     deploy adapters: [tomcat8(credentialsId: 'TomcatLogin', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
