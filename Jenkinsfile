@@ -51,7 +51,6 @@ pipeline {
                 }
             }
         }
-
         stage ('Functional Test') {
             steps {
                 dir('functional-test') {
